@@ -16,9 +16,6 @@ public class CadastraGeral {
     }
 
     public String pesquisa(String marca){
-        if (vendas.size() == 0){
-            return null;
-        }
         ArrayList<String> pesquisa = new ArrayList<String>(); 
             for (Venda venda : vendas){
                 Produtos produto = venda.getProduto();
@@ -27,6 +24,9 @@ public class CadastraGeral {
                     pesquisa.add(venda.toString());
                 }
             }
+        if (pesquisa.size() == 0){
+            return null;
+        }
         return pesquisa.toString().replace("[", "").replace("]", "").replace(",", "");
     }
 
