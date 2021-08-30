@@ -50,22 +50,40 @@ public class Main {
             System.out.println("|5. Cadastrar nova venda                        |");
             System.out.println("|6. Sair                                        |");
             System.out.println("|-----------------------------------------------|");  
-            System.out.println("Digite sua opcao: ");
+            System.out.print("Digite sua opcao: ");
             opcao = in.nextInt();
             switch(opcao){
                 case 1: 
-                    System.out.println(cd.pesquisaTudo());
+                    String pesquisaTudo = cd.pesquisaTudo();
+                    if (pesquisaTudo == null){
+                        System.out.println("Não exitem vendas ou produtos cadastrados.");
+                    }
+                    else{
+                        System.out.println(pesquisaTudo);
+                    }
                 break;
                 case 2:
                     System.out.println("Codigo da Venda: ");
                     int codigo = in.nextInt();
-                    System.out.println(cd.pesquisa(codigo)); 
+                    String pesquisaCodigo = cd.pesquisa(codigo);
+                    if (pesquisaCodigo == null){
+                        System.out.println("Não existem vendas com esse código.");
+                    }
+                    else{
+                        System.out.println(pesquisaCodigo);
+                    } 
                 break;
                 case 3: 
                     //pesquisa venda marca
                     System.out.println("Marca do Produto: ");
                     String marcaProdutoVenda = input.next();
-                    System.out.println(cd.pesquisa(TratamentoString.toTitle(marcaProdutoVenda)));
+                    String pesquisaMarca = cd.pesquisa(TratamentoString.toTitle(marcaProdutoVenda));
+                    if (pesquisaMarca == null){
+                        System.out.println("Não existem produtos com essa marca.");
+                    }
+                    else{
+                        System.out.println(pesquisaMarca);
+                    }
                 break;
                 case 4: 
                     //cadastra novo eletronico
